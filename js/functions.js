@@ -29,7 +29,7 @@ palindrome('Кекс');
 palindrome('Лёша на полке клопа нашёл ');
 
 function getInteger(string) {
-  const integer = Number(string.match( /\d+/g ).join(''));
+  const integer = Number(string.match(/\d+/g).join(''));
   return integer;
 }
 
