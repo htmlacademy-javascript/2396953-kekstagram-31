@@ -1,5 +1,5 @@
 function lineLength(name, long) {
-  let lengthName = name.length;
+  const lengthName = name.length;
 
   if (lengthName < long || lengthName === long) {
     return true;
@@ -8,15 +8,13 @@ function lineLength(name, long) {
   }
 }
 
-const oneLine = "проверяемая строка";
-
-lineLength(oneLine, 20);
-lineLength(oneLine, 18);
-lineLength(oneLine, 10);
+lineLength('проверяемая строка', 20);
+lineLength('проверяемая строка', 18);
+lineLength('проверяемая строка', 10);
 
 function palindrome (string) {
-  let stringToLowerCase = string.toLowerCase().replace(/ /g, '');
-  let reverseString = stringToLowerCase.split("").reverse().join("");
+  const stringToLowerCase = string.toLowerCase().replace(/ /g, '');
+  const reverseString = stringToLowerCase.split('').reverse().join('');
 
   if (stringToLowerCase === reverseString) {
     return true;
