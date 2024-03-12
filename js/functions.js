@@ -6,20 +6,13 @@ function lineLength(name, long) {
   } else {
     return false;
   }
-
 }
 
 const oneLine = "проверяемая строка";
 
-console.log("Строка короче 20 символов");
-console.log(lineLength(oneLine, 20));
-
-console.log("Длина строки ровно 18 символов");
-console.log(lineLength(oneLine, 18));
-
-console.log("Строка длиннее 10 символов");
-console.log(lineLength(oneLine, 10));
-
+lineLength(oneLine, 20);
+lineLength(oneLine, 18);
+lineLength(oneLine, 10);
 
 function palindrome (string) {
   let stringToLowerCase = string.toLowerCase().replace(/ /g, '');
@@ -30,31 +23,22 @@ function palindrome (string) {
   } else {
     return false;
   }
-
 }
 
-console.log("Строка является палиндромом");
-console.log(palindrome('топот'));
-
-console.log("Несмотря на разный регистр, тоже палиндром");
-console.log(palindrome('ДовОд'));
-
-console.log("Это не палиндром");
-console.log(palindrome('Кекс'));
-
-console.log("Это палиндром");
-console.log(palindrome('Лёша на полке клопа нашёл '));
+palindrome('топот');
+palindrome('ДовОд');
+palindrome('Кекс');
+palindrome('Лёша на полке клопа нашёл ');
 
 function getInteger(string) {
   const integer = Number(string.match( /\d+/g ).join(''));
   return integer;
 }
 
-console.log("целое положительное число");
-console.log(getInteger('2023 год'));
-console.log(getInteger('ECMAScript 2022'));
-console.log(getInteger('1 кефир, 0.5 батона'));
-console.log(getInteger('агент 007'));
-console.log(getInteger('2023'));
-console.log(getInteger('-1'));
-console.log(getInteger('1.5'));
+getInteger('2023 год');
+getInteger('ECMAScript 2022');
+getInteger('1 кефир, 0.5 батона');
+getInteger('агент 007');
+getInteger('2023');
+getInteger('-1');
+getInteger('1.5');
