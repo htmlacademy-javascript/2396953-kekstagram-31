@@ -5,7 +5,7 @@ function getRandomNumber(max, min = 0) {
 function generateUniqueRandomNumber(number, usedNumbers) {
   let randomNumber;
   do {
-      randomNumber = number;
+    randomNumber = number;
   } while (usedNumbers.has(randomNumber));
   usedNumbers.add(randomNumber);
   return randomNumber;
@@ -38,38 +38,38 @@ const arrDescription = [
   'Домик у озера в лесу'
 ];
 
-let nameUser = ['Александр', 'Екатерина', 'Иван', 'Мария', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Артем', 'Наталья', 'Михаил', 'Елена', 'Владимир', 'Татьяна', 'Алексей', 'Юлия', 'Павел', 'София', 'Константин', 'Алиса', 'Игорь', 'Виктория', 'Петр', 'Оксана', 'Роман'];
+const nameUser = ['Александр', 'Екатерина', 'Иван', 'Мария', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Артем', 'Наталья', 'Михаил', 'Елена', 'Владимир', 'Татьяна', 'Алексей', 'Юлия', 'Павел', 'София', 'Константин', 'Алиса', 'Игорь', 'Виктория', 'Петр', 'Оксана', 'Роман'];
 
-let avatar = getRandomNumber(6);
+const avatar = getRandomNumber(6);
 
 function generateRandomComment() {
-  let message = [
-      'Всё отлично!',
-      'В целом всё неплохо. Но не всё.',
-      'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-      'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-      'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-      'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
+  const message = [
+    'Всё отлично!',
+    'В целом всё неплохо. Но не всё.',
+    'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+    'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+    'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+    'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
   ];
 
   function getRandomContent(array) {
-      const count = getRandomNumber(1);
-      const shuffled = array.sort(() => 0.5 - Math.random());
-      if (count === 1) {
-          return shuffled[0];
-      } else {
-          return shuffled.slice(0, 2);
-      }
+    const count = getRandomNumber(1);
+    const shuffled = array.sort(() => 0.5 - Math.random());
+    if (count === 1) {
+      return shuffled[0];
+    } else {
+      return shuffled.slice(0, 2);
+    }
   }
 
-  let usedNumbersIdComments = new Set();
-  let uniqueRandomNumber = generateUniqueRandomNumber(getRandomNumber(200), usedNumbersIdComments);
+  const usedNumbersIdComments = new Set();
+  const uniqueRandomNumber = generateUniqueRandomNumber(getRandomNumber(200), usedNumbersIdComments);
 
-  let comments = {
-      id: uniqueRandomNumber,
-      avatar: `img/avatar-${avatar}.svg`,
-      message: getRandomContent(message),
-      name: nameUser[getRandomNumber(25)],
+  const comments = {
+    id: uniqueRandomNumber,
+    avatar: `img/avatar-${avatar}.svg`,
+    message: getRandomContent(message),
+    name: nameUser[getRandomNumber(25)],
   }
 
   return comments;
@@ -79,17 +79,17 @@ const photoArray = [];
 
 for (let i = 1; i <= 25; i++) {
   const photo = {
-      id: i,
-      url: `photos/${i}.jpg`,
-      description: arrDescription[i],
-      likes: getRandomNumber(200),
-      comments: []
+    id: i,
+    url: `photos/${i}.jpg`,
+    description: arrDescription[i],
+    likes: getRandomNumber(200),
+    comments: []
   };
 
   const numComments = getRandomNumber(29);
   for (let j = 0; j < numComments; j++) {
-      const comment = generateRandomComment();
-      photo.comments.push(comment);
+    const comment = generateRandomComment();
+    photo.comments.push(comment);
   }
 
   photoArray.push(photo);
