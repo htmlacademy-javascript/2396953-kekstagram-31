@@ -1,6 +1,6 @@
 function getRandomNumber(max, min = 0) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 
 function generateUniqueRandomNumber(number, usedNumbers) {
   let randomNumber;
@@ -70,7 +70,7 @@ function generateRandomComment() {
     avatar: `img/avatar-${avatar}.svg`,
     message: getRandomContent(message),
     name: nameUser[getRandomNumber(25)],
-  }
+  };
 
   return comments;
 }
