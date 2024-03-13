@@ -1,7 +1,6 @@
 import {getRandomNumber} from './util.js'
 import {arrDescription} from './data.js'
 import {generateRandomComment} from './generate-random-comment.js'
-export {arrayPhoto}
 
 const arrayPhoto = [];
 
@@ -22,3 +21,5 @@ for (let i = 1; i <= 25; i++) {
 
   arrayPhoto.push(photo);
 }
+
+export {arrayPhoto}
