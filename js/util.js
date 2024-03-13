@@ -11,4 +11,4 @@ function getUniqueRandomNumber(number, usedNumbers) {
   return randomNumber;
 }
 
-export {getRandomNumber, getUniqueRandomNumber}
+export {getRandomNumber, getUniqueRandomNumber};

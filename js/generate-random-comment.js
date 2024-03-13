@@ -1,5 +1,5 @@
-import {getRandomNumber, getUniqueRandomNumber} from './util.js'
-import {nameUser, avatar} from './data.js'
+import {getRandomNumber, getUniqueRandomNumber} from './util.js';
+import {nameUser, avatar} from './data.js';
 
 function generateRandomComment() {
   function getRandomContent(array) {
@@ -34,4 +34,4 @@ function generateRandomComment() {
   return comments;
 }
 
-export {generateRandomComment}
+export {generateRandomComment};
