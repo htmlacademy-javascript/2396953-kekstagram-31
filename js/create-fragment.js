@@ -6,10 +6,11 @@ function createFragment(arrayPhoto) {
   const fragment = document.createDocumentFragment();
 
   arrayPhoto.forEach((data) => {
-    const {url, description, likes, comments} = data;
+    const {id, url, description, likes, comments} = data;
 
     const element = template.cloneNode(true);
 
+    element.querySelector('.picture__img').id = id;
     element.querySelector('.picture__likes').textContent = likes;
     element.querySelector('.picture__img').src = url;
     element.querySelector('.picture__img').alt = description;
