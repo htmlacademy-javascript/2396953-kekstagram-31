@@ -61,8 +61,10 @@ function createPopup(arrayPhoto) {
   });
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closePopup();
+    if (e.key === 27) {
+      popupWrapper.classList.add('hidden');
+      body.classList.remove('modal-open');
+      popupSocialComments.innerHTML = '';
     }
   });
 
