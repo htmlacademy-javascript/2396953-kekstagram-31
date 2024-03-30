@@ -35,8 +35,9 @@ function createPopup(arrayPhoto) {
     el.onclick = () => {
       const imgId = el.querySelector('.picture__img').id;
       const imgAvatar = `img/avatar-${getRandomNumber(6, 1)}.svg`;
-
-      const arrEl = arrayPhoto.filter(obj = () => obj.id === Number(imgId));
+      const arrEl = arrayPhoto.filter((obj) =>
+        obj.id === Number(imgId)
+      );
       const {url, description, likes, comments} = arrEl[0];
 
       commentTotalCount.textContent = comments.length;
@@ -53,7 +54,7 @@ function createPopup(arrayPhoto) {
       popupImg.src = url;
 
       const wrapperSocialComments = document.querySelector('.social__comments');
-
+      
       comments.forEach((data, index) => {
         const {name, avatar, message} = data;
 
