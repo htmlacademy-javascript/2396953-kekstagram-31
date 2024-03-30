@@ -59,10 +59,7 @@ function createPopup(arrayPhoto) {
       openPopup();
     };
   });
-  
-  popupClose.addEventListener('click', () => {
-    closePopup();
-  });
+  popupClose.onclick = () => closePopup();
 }
 
 export {createPopup};
