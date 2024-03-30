@@ -36,7 +36,7 @@ function createPopup(arrayPhoto) {
       const imgId = el.querySelector('.picture__img').id;
       const imgAvatar = `img/avatar-${getRandomNumber(6, 1)}.svg`;
 
-      const arrEl = arrayPhoto.filter(obj => obj.id === Number(imgId));
+      const arrEl = arrayPhoto.filter(obj = () => obj.id === Number(imgId));
       const {url, description, likes, comments} = arrEl[0];
 
       commentTotalCount.textContent = comments.length;
@@ -59,7 +59,9 @@ function createPopup(arrayPhoto) {
         element.querySelector('.social__picture').alt = name;
         element.querySelector('.social__text').textContent = message;
 
-        if (index > 4) {return}
+        if (index > 4) {
+          return;
+        }
 
         createEl(element, wrapperSocialComments);
       });
@@ -69,14 +71,14 @@ function createPopup(arrayPhoto) {
   });
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closePopup();
+      if (e.key === 'Escape') {
+        closePopup();
+      }
     }
-  });
+  );
 
   popupClose.addEventListener('click', () => {
-    closePopup();
-  });
+      closePopup();
+    }
+  );
 }
-
-export {createPopup};
