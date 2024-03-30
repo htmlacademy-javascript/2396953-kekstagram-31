@@ -55,7 +55,7 @@ function createPopup(arrayPhoto) {
       popupImg.src = url;
       const wrapperSocialComments = document.querySelector('.social__comments');
 
-      comments.forEach((data, index) => {
+      comments.forEach((data) => {
         const {name, avatar, message} = data;
         const element = document.querySelector('#comment').content.querySelector('.social__comment').cloneNode(true);
 
@@ -66,11 +66,11 @@ function createPopup(arrayPhoto) {
         createEl(element, wrapperSocialComments);
       });
 
-      const elements = document.querySelectorAll('.social__comment');
+      const socialComments = document.querySelectorAll('.social__comment');
 
-      elements.forEach((el, index) => {
+      socialComments.forEach((socialComment, index) => {
         if (index > 4) {
-          el.classList.add('hidden');
+          socialComment.classList.add('hidden');
         }
       });
 
