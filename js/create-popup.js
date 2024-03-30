@@ -59,15 +59,7 @@ function createPopup(arrayPhoto) {
       openPopup();
     };
   });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 27) {
-      popupWrapper.classList.add('hidden');
-      body.classList.remove('modal-open');
-      popupSocialComments.innerHTML = '';
-    }
-  });
-
+  
   popupClose.addEventListener('click', () => {
     closePopup();
   });
