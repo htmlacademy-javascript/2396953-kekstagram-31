@@ -41,7 +41,11 @@ function createPopup(arrayPhoto) {
 
       commentTotalCount.textContent = comments.length;
 
-      5 > comments.length ? commentShownCount.textContent = comments.length : commentShownCount.textContent = 5;
+      if (5 > comments.length) {
+        commentShownCount.textContent = comments.length;
+      } else {
+        commentShownCount.textContent = 5;
+      }
 
       socialHeaderLikesCount.textContent = likes;
       socialHeaderPicture.src = imgAvatar;
@@ -71,14 +75,14 @@ function createPopup(arrayPhoto) {
   });
 
   document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closePopup();
-      }
-    }
-  );
-
-  popupClose.addEventListener('click', () => {
+    if (e.key === 'Escape') {
       closePopup();
     }
-  );
+  });
+
+  popupClose.addEventListener('click', () => {
+    closePopup();
+  });
 }
+
+export {createPopup};
