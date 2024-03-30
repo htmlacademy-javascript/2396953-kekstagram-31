@@ -96,7 +96,7 @@ function createPopup(arrayPhoto) {
       commentShownCount.textContent = Number(commentTotalCount.textContent);
       commentloader.classList.add('hidden');
     }
-  }
+  };
 }
 
 export {createPopup};
