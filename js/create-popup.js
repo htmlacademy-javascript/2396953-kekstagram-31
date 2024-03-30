@@ -2,23 +2,23 @@ import {createEl} from './create-el.js';
 import {getRandomNumber} from './util.js';
 
 function createPopup(arrayPhoto) {
-  const popupWrapper = document.querySelector(".big-picture");
-  const popupImg = popupWrapper.querySelector("img");
+  const popupWrapper = document.querySelector('.big-picture');
+  const popupImg = popupWrapper.querySelector('img');
 
-  const popupSocialHeader = popupWrapper.querySelector(".social__header");
-  const socialHeaderPicture = popupSocialHeader.querySelector(".social__picture");
-  const socialHeaderLikesCount = popupSocialHeader.querySelector(".likes-count");
+  const popupSocialHeader = popupWrapper.querySelector('.social__header');
+  const socialHeaderPicture = popupSocialHeader.querySelector('.social__picture');
+  const socialHeaderLikesCount = popupSocialHeader.querySelector('.likes-count');
 
-  const popupSocialComments = popupWrapper.querySelector(".social__comments");
-  const popupSocialCaption = popupWrapper.querySelector(".social__caption");
+  const popupSocialComments = popupWrapper.querySelector('.social__comments');
+  const popupSocialCaption = popupWrapper.querySelector('.social__caption');
 
 
-  const popupButtons = document.querySelectorAll(".picture");
-  const popupClose = document.querySelector(".big-picture__cancel");
-  const body = document.querySelector("body");
+  const popupButtons = document.querySelectorAll('.picture');
+  const popupClose = document.querySelector('.big-picture__cancel');
+  const body = document.querySelector('body');
 
-  const commentShownCount = popupWrapper.querySelector(".social__comment-shown-count");
-  const commentTotalCount = popupWrapper.querySelector(".social__comment-total-count");
+  const commentShownCount = popupWrapper.querySelector('.social__comment-shown-count');
+  const commentTotalCount = popupWrapper.querySelector('.social__comment-total-count');
 
   function openPopup () {
     popupWrapper.classList.remove('hidden');
@@ -28,7 +28,7 @@ function createPopup(arrayPhoto) {
   function closePopup () {
     popupWrapper.classList.add('hidden');
     body.classList.remove('modal-open');
-    popupSocialComments.innerHTML = "";
+    popupSocialComments.innerHTML = '';
   }
 
   popupButtons.forEach((el) => {
@@ -42,8 +42,6 @@ function createPopup(arrayPhoto) {
       commentTotalCount.textContent = comments.length;
 
       5 > comments.length ? commentShownCount.textContent = comments.length : commentShownCount.textContent = 5;
-
-      console.log(comments.length);
 
       socialHeaderLikesCount.textContent = likes;
       socialHeaderPicture.src = imgAvatar;
@@ -65,7 +63,7 @@ function createPopup(arrayPhoto) {
 
         createEl(element, wrapperSocialComments);
       });
-      
+
       openPopup();
     });
   });
