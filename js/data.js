@@ -1,8 +1,4 @@
-import {getRandomNumber} from './util.js';
-
 const nameUser = ['Александр', 'Екатерина', 'Иван', 'Мария', 'Дмитрий', 'Анна', 'Сергей', 'Ольга', 'Артем', 'Наталья', 'Михаил', 'Елена', 'Владимир', 'Татьяна', 'Алексей', 'Юлия', 'Павел', 'София', 'Константин', 'Алиса', 'Игорь', 'Виктория', 'Петр', 'Оксана', 'Роман'];
-
-const avatar = getRandomNumber(6);
 
 const arrDescription = [
   'Прекрасный закат на пляже',
@@ -31,4 +27,4 @@ const arrDescription = [
   'Домик у озера в лесу'
 ];
 
-export {nameUser, avatar, arrDescription};
+export {nameUser, arrDescription};

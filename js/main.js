@@ -1,7 +1,4 @@
 import {arrayPhoto} from './array-photo.js';
+import {createPopup} from './create-popup.js';
 
-import {createFragment} from './create-fragment.js';
-
-createFragment(arrayPhoto);
-
-
+createPopup(arrayPhoto);

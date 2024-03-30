@@ -1,5 +1,5 @@
 import {getRandomNumber, getUniqueRandomNumber} from './util.js';
-import {nameUser, avatar} from './data.js';
+import {nameUser} from './data.js';
 
 function generateRandomComment() {
   function getRandomContent(array) {
@@ -26,7 +26,7 @@ function generateRandomComment() {
 
   const comments = {
     id: uniqueRandomNumber,
-    avatar: `img/avatar-${avatar}.svg`,
+    avatar: `img/avatar-${getRandomNumber(6, 1)}.svg`,
     message: getRandomContent(message),
     name: nameUser[getRandomNumber(25)],
   };
