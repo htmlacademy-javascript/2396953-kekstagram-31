@@ -32,11 +32,11 @@ function createPopup(arrayPhoto) {
   }
 
   popupButtons.forEach((el) => {
-    el.addEventListener('click', function() {
+    el.onclick = () => {
       const imgId = el.querySelector('.picture__img').id;
       const imgAvatar = `img/avatar-${getRandomNumber(6, 1)}.svg`;
 
-      let arrEl = arrayPhoto.filter(obj => obj.id === Number(imgId));
+      const arrEl = arrayPhoto.filter(obj => obj.id === Number(imgId));
       const {url, description, likes, comments} = arrEl[0];
 
       commentTotalCount.textContent = comments.length;
@@ -65,7 +65,7 @@ function createPopup(arrayPhoto) {
       });
 
       openPopup();
-    });
+    };
   });
 
   document.addEventListener('keydown', function(e) {
