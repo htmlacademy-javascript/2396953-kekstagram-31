@@ -1,5 +1,5 @@
 import {createEl} from './create-el.js';
-import {getRandomNumber} from './util.js';
+import {getRandomNumber, openPopup, closePopup} from './util.js';
 
 function createPopup(arrayPhoto) {
   const popupWrapper = document.querySelector('.big-picture');
@@ -14,21 +14,10 @@ function createPopup(arrayPhoto) {
 
   const popupButtons = document.querySelectorAll('.picture');
   const popupClose = document.querySelector('.big-picture__cancel');
-  const body = document.querySelector('body');
+
   const commentloader = popupWrapper.querySelector('.comments-loader');
   const commentShownCount = popupWrapper.querySelector('.social__comment-shown-count');
   const commentTotalCount = popupWrapper.querySelector('.social__comment-total-count');
-
-  function openPopup () {
-    popupWrapper.classList.remove('hidden');
-    body.classList.add('modal-open');
-  }
-
-  function closePopup () {
-    popupWrapper.classList.add('hidden');
-    body.classList.remove('modal-open');
-    popupSocialComments.innerHTML = '';
-  }
 
   popupButtons.forEach((el) => {
     el.onclick = () => {
@@ -74,11 +63,15 @@ function createPopup(arrayPhoto) {
         }
       });
 
-      openPopup();
+      openPopup(popupWrapper);
     };
   });
 
-  popupClose.onclick = () => closePopup();
+  function resetPopup () {
+    popupSocialComments.innerHTML = '';
+  }
+
+  popupClose.onclick = () => closePopup(popupWrapper, resetPopup);
 
   commentloader.onclick = () => {
     const socialCommentsHidden = document.querySelectorAll('.social__comment.hidden');
@@ -92,7 +85,7 @@ function createPopup(arrayPhoto) {
     const count = commentShownCount.textContent;
     commentShownCount.textContent = Number(count) + 5;
 
-    if (Number(commentShownCount.textContent) > Number(commentTotalCount.textContent)) {
+    if (Number(commentShownCount.textContent) >= Number(commentTotalCount.textContent)) {
       commentShownCount.textContent = Number(commentTotalCount.textContent);
       commentloader.classList.add('hidden');
     }
