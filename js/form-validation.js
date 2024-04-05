@@ -1,13 +1,18 @@
 import {stopEsc} from './util.js';
 
 let valid = true;
-const validationFields = document.querySelectorAll('.img-upload__text input');
 const descriptionInput = document.querySelector('.text__description');
 const descriptionMaxLength = descriptionInput.getAttribute('maxlength');
 const hashtagsInput = document.querySelector('.text__hashtags');
 const errorWrapper = document.querySelector('.img-upload__field-wrapper--error');
 const hashtagsMaxValue = 5;
 const hashtagMaxLength = 20;
+
+const displayError = (errorMessage) => {
+  valid = false;
+  errorWrapper.textContent = errorMessage;
+  errorWrapper.style.display = 'block';
+}
 
 hashtagsInput.addEventListener('input', () => {
   valid = true;
@@ -62,11 +67,5 @@ descriptionInput.addEventListener('input', () => {
     displayError(`длина комментария больше ${descriptionMaxLength} символов`);
   }
 });
-
-const displayError = (errorMessage) => {
-  valid = false;
-  errorWrapper.textContent = errorMessage;
-  errorWrapper.style.display = 'block';
-}
 
 export {valid};
