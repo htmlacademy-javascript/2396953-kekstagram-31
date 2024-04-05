@@ -11,8 +11,8 @@ function uploadingPhotos () {
   imgForm.onchange = () => {
     const [file] = imgInp.files;
     if (!file) {
-      return
-    };
+      return;
+    }
 
     const fileUrl = URL.createObjectURL(file);
     imgUpload.src = fileUrl;
@@ -21,11 +21,11 @@ function uploadingPhotos () {
     effectsItems.forEach((effectsItem) => {
       effectsItem.style.backgroundImage = `url('${fileUrl}')`;
     });
-  }
+  };
 
   popupClose.onclick = () => closePopup(popupWrapper);
   document.addEventListener('keydown', (event) => {
-    closePopupOnEsc(event, popupWrapper)
+    closePopupOnEsc(event, popupWrapper);
   });
 }
 
