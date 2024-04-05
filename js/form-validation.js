@@ -1,3 +1,5 @@
+import {stopEsc} from './util.js';
+
 let valid = true;
 const validationFields = document.querySelectorAll('.img-upload__text input');
 const descriptionInput = document.querySelector('.text__description');
@@ -6,14 +8,6 @@ const hashtagsInput = document.querySelector('.text__hashtags');
 const errorWrapper = document.querySelector('.img-upload__field-wrapper--error');
 const hashtagsMaxValue = 5;
 const hashtagMaxLength = 20;
-
-validationFields.forEach(field => {
-  field.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      event.stopPropagation();
-    }
-  });
-});
 
 hashtagsInput.addEventListener('input', () => {
   valid = true;
@@ -59,12 +53,13 @@ hashtagsInput.addEventListener('input', () => {
   }
 
   errorWrapper.style.display = 'none';
+
+  hashtagsInput.addEventListener('keydown', stopEsc);
 });
 
 descriptionInput.addEventListener('input', () => {
   if (descriptionInput.length > descriptionMaxLength) {
     displayError(`длина комментария больше ${descriptionMaxLength} символов`);
-    return;
   }
 });
 
