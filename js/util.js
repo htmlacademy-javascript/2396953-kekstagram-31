@@ -36,6 +36,6 @@ const stopEsc = (event) => {
   if (event.key === 'Escape') {
     event.stopPropagation();
   }
-}
+};
 
 export {getRandomNumber, getUniqueRandomNumber, openPopup, closePopup, closePopupOnEsc, stopEsc};
