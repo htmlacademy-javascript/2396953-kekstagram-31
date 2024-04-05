@@ -12,7 +12,7 @@ const displayError = (errorMessage) => {
   valid = false;
   errorWrapper.textContent = errorMessage;
   errorWrapper.style.display = 'block';
-}
+};
 
 hashtagsInput.addEventListener('input', () => {
   valid = true;

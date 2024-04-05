@@ -9,7 +9,9 @@ createPopup(arrayPhoto);
 
 uploadingPhotos();
 
-
 document.querySelector('#upload-submit').addEventListener('click', (event) => {
-  valid ? document.querySelector('#upload-select-image').submit() : event.preventDefault();
+  event.preventDefault();
+  if (valid) {
+    document.querySelector('#upload-select-image').submit();
+  }
 });
