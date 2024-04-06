@@ -23,6 +23,9 @@ function control() {
   const img = document.querySelector('.img-upload__preview img');
   const effectsItem = document.querySelectorAll('.effects__radio');
 
+  const minus = document.querySelector('.scale__control--smaller');
+  const plus = document.querySelector('.scale__control--bigger');
+
   const STEP_SCALE = 25;
 
   let changesEffectValue = 0;
@@ -33,16 +36,16 @@ function control() {
     img.style.transform = `scale(${value / 100})`;
   };
 
-  scale.addEventListener('click', (event) => {
-    if (event.target.classList.contains('scale__control--smaller')) {
-      scaleCurrentValue -= STEP_SCALE;
-      changesScale(scaleCurrentValue);
-    } else if (event.target.classList.contains('scale__control--bigger')) {
-      scaleCurrentValue += STEP_SCALE;
-      changesScale(scaleCurrentValue);
-    }
+  plus.addEventListener('click', () => {
+    scaleCurrentValue = scaleCurrentValue + STEP_SCALE;
+    changesScale(scaleCurrentValue);
   });
 
+  minus.addEventListener('click', () => {
+    scaleCurrentValue = scaleCurrentValue - STEP_SCALE;
+    changesScale(scaleCurrentValue);
+  });
+  
   noUiSlider.create(slider, {
     range: {
       'min': 0,
