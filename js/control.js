@@ -23,6 +23,8 @@ function control() {
   const img = document.querySelector('.img-upload__preview img');
   const effectsItem = document.querySelectorAll('.effects__radio');
 
+  const STEP_SCALE = 25;
+
   let changesEffectValue = 0;
   let scaleCurrentValue = parseInt(scaleValue.value);
 
@@ -33,10 +35,10 @@ function control() {
 
   scale.addEventListener('click', (event) => {
     if (event.target.classList.contains('scale__control--smaller')) {
-      scaleCurrentValue -= 25;
+      scaleCurrentValue -= STEP_SCALE;
       changesScale(scaleCurrentValue);
     } else if (event.target.classList.contains('scale__control--bigger')) {
-      scaleCurrentValue += 25;
+      scaleCurrentValue += STEP_SCALE;
       changesScale(scaleCurrentValue);
     }
   });
