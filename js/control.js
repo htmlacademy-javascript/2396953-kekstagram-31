@@ -28,7 +28,7 @@ function control() {
   let changesEffectValue = 0;
   let scaleCurrentValue = parseInt(scaleValue.value);
 
-  let changesScale = (value) => {
+  const changesScale = (value) => {
     scaleValue.value = `${value}%`;
     img.style.transform = `scale(${value / 100})`;
   };
