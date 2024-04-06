@@ -1,8 +1,4 @@
 function control() {
-  // const SLIDER_INITIAL_MIN = 0;
-  // const SLIDER_INITIAL_MAX = 100;
-  // const SLIDER_INITIAL_STEP = 1;
-
   const EffectConfig = {
     chrome: {
       style: 'grayscale', unit: '', sliderOptions: { min: 0, max: 1, step: 0.1 },
@@ -21,37 +17,17 @@ function control() {
     }
   };
 
-  // const initialSliderOptions = {
-  //   range: {
-  //     min: SLIDER_INITIAL_MIN,
-  //     max: SLIDER_INITIAL_MAX,
-  //   },
-  //   start: SLIDER_INITIAL_MAX,
-  //   step: SLIDER_INITIAL_STEP,
-  //   connect: 'lower',
-  //   format: {
-  //     to: (value) => Number.isInteger(value) ? value.toFixed(0) : value.toFixed(1),
-  //     from: (value) => parseFloat(value),
-  //   },
-  // };
-
   const slider = document.querySelector('.effect-level__slider');
-
-
-
-  const scale = document.querySelector('.scale'),
-    scaleValue = scale.querySelector('.scale__control--value');
+  const scale = document.querySelector('.scale');
+  const scaleValue = document.querySelector('.scale__control--value');
   const img = document.querySelector('.img-upload__preview img');
   const effectsItem = document.querySelectorAll('.effects__radio');
-  const effectsChecked = document.querySelector('input[name="effect"]:checked');
-  const effects = document.querySelector('.effects__list');
+
   let changesEffectValue = 0;
-
-
   let scaleCurrentValue = parseInt(scaleValue.value);
 
   let changesScale = (value) => {
-    scaleValue.value = `${value}%`
+    scaleValue.value = `${value}%`;
     img.style.transform = `scale(${value / 100})`;
   }
 
@@ -65,7 +41,6 @@ function control() {
     }
   });
 
-
   noUiSlider.create(slider, {
     range: {
       'min': 0,
@@ -76,12 +51,9 @@ function control() {
     connect: 'lower'
   });
 
-
-
   const styleFilter = (style, effectValue, unit = '') => {
     img.style.filter = `${style}(${effectValue}${unit})`;
   }
-
 
   effectsItem.forEach(radioButton => {
     radioButton.addEventListener('click', function () {
@@ -90,11 +62,18 @@ function control() {
       if (selectedValue === 'none') {
         img.style.filter = 'none';
       } else {
-        const arrEffectValue = EffectConfig[selectedValue];
-        const { style, unit, sliderOptions } = arrEffectValue;
-        const { min, max, step } = sliderOptions;
+        let arrEffectValue = EffectConfig[selectedValue];
+        let { style, unit, sliderOptions } = arrEffectValue;
 
-        styleFilter(style, max, unit);
+        styleFilter(style, sliderOptions.max, unit);
+
+        slider.noUiSlider.updateOptions({
+          range: {
+            min: sliderOptions.min,
+            max: sliderOptions.max,
+          },
+          step: sliderOptions.step,
+        });
 
         slider.noUiSlider.on('update', () => {
           changesEffectValue = slider.noUiSlider.get();
@@ -103,8 +82,5 @@ function control() {
       }
     });
   });
-
 }
 export { control };
-
-// Shift + Alt + F
