@@ -27,7 +27,7 @@ function control() {
 
   const STEP_SCALE = 25;
 
-  let scaleCurrentValue = parseInt(scaleValue.value);
+  let scaleCurrentValue = parseInt(scaleValue.value, 10);
 
   const changesScale = (value) => {
     scaleValue.value = `${value}%`;
