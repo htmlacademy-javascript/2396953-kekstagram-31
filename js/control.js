@@ -31,7 +31,7 @@ function control() {
   let changesScale = (value) => {
     scaleValue.value = `${value}%`;
     img.style.transform = `scale(${value / 100})`;
-  }
+  };
 
   scale.addEventListener('click', (event) => {
     if (event.target.classList.contains('scale__control--smaller')) {
@@ -55,17 +55,16 @@ function control() {
 
   const styleFilter = (style, effectValue, unit = '') => {
     img.style.filter = `${style}(${effectValue}${unit})`;
-  }
+  };
 
-  effectsItem.forEach(radioButton => {
+  effectsItem.forEach((radioButton) => {
     radioButton.addEventListener('click', function () {
       const selectedValue = this.value;
 
       if (selectedValue === 'none') {
         img.style.filter = 'none';
       } else {
-        let arrEffectValue = EffectConfig[selectedValue];
-        let { style, unit, sliderOptions } = arrEffectValue;
+        const { style, unit, sliderOptions } = EffectConfig[selectedValue];
 
         styleFilter(style, sliderOptions.max, unit);
 
