@@ -35,6 +35,7 @@ const closePopupOnEsc = (event, popupWrapper) => {
 const stopEsc = (event) => {
   if (event.key === 'Escape') {
     event.stopPropagation();
+    event.preventDefault();
   }
 };
 
