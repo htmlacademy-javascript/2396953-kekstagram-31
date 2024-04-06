@@ -18,7 +18,6 @@ function control() {
   };
 
   const slider = document.querySelector('.effect-level__slider');
-  const scale = document.querySelector('.scale');
   const scaleValue = document.querySelector('.scale__control--value');
   const img = document.querySelector('.img-upload__preview img');
   const effectsItem = document.querySelectorAll('.effects__radio');
@@ -79,8 +78,7 @@ function control() {
         });
 
         slider.noUiSlider.on('update', () => {
-          let changesEffectValue = slider.noUiSlider.get();
-          styleFilter(style, changesEffectValue, unit);
+          styleFilter(style, slider.noUiSlider.get(), unit);
         });
       }
     });
