@@ -28,7 +28,6 @@ function control() {
 
   const STEP_SCALE = 25;
 
-  let changesEffectValue = 0;
   let scaleCurrentValue = parseInt(scaleValue.value);
 
   const changesScale = (value) => {
@@ -45,7 +44,7 @@ function control() {
     scaleCurrentValue = scaleCurrentValue - STEP_SCALE;
     changesScale(scaleCurrentValue);
   });
-  
+
   noUiSlider.create(slider, {
     range: {
       'min': 0,
@@ -80,7 +79,7 @@ function control() {
         });
 
         slider.noUiSlider.on('update', () => {
-          changesEffectValue = slider.noUiSlider.get();
+          let changesEffectValue = slider.noUiSlider.get();
           styleFilter(style, changesEffectValue, unit);
         });
       }
