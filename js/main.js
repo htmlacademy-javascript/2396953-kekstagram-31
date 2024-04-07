@@ -4,8 +4,8 @@ import { uploadingPhotos } from './uploading-photos.js';
 import { valid } from './form-validation.js';
 import { control } from './control.js';
 import { getData } from './api.js';
-import { showErrorMessage, showSuccessMessage } from './error-message.js';
-import { FORM, POPUP_WRAPPER_IMG } from './const.js';
+import { showMessage, textButton, submitButtonText } from './message.js';
+import { FORM, POPUP_WRAPPER_IMG, ERROR_BLOCK, SUCCESS_BLOCK } from './const.js';
 import { closePopup } from './util.js';
 
 const requestServer = async () => {
@@ -15,7 +15,7 @@ const requestServer = async () => {
     createFragment(arrPhoto);
     createPopup(arrPhoto);
   } catch (error) {
-    showErrorMessage(error.message);
+    showMessage(ERROR_BLOCK);
   }
 };
 
@@ -24,25 +24,25 @@ uploadingPhotos();
 control();
 
 const sendFormData = async (formElement) => {
-  if (!valid) {
-    return;
-  }
+  if (valid) {
+    try {
 
-  try {
-    const response = await fetch(formElement.action, {
-      method: formElement.method,
-      body: new FormData(formElement)
-    });
-
-    if (response.ok) {
-      //FORM.reset(); // Сбрасываем форму
-      closePopup(POPUP_WRAPPER_IMG);
-      showSuccessMessage();
-    } else {
-      showErrorMessage();
+      const response = await fetch(formElement.action, {
+        method: formElement.method,
+        body: new FormData(formElement)
+      });
+      if (response.ok) {
+        textButton(false, submitButtonText.SENDING);
+        formElement.reset();
+        closePopup(POPUP_WRAPPER_IMG);
+        showMessage(SUCCESS_BLOCK);
+        textButton(true, submitButtonText.IDLE);
+      } else {
+        showMessage(ERROR_BLOCK);
+      }
+    } catch (error) {
+      showMessage(ERROR_BLOCK);
     }
-  } catch (error) {
-    showErrorMessage();
   }
 };
 
