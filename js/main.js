@@ -4,6 +4,7 @@ import { createPopup } from './create-popup.js';
 import { uploadingPhotos } from './uploading-photos.js';
 import { valid } from './form-validation.js';
 import { control } from './control.js';
+import { getData } from './api.js';
 
 createFragment(arrayPhoto);
 createPopup(arrayPhoto);
@@ -18,3 +19,8 @@ document.querySelector('#upload-submit').addEventListener('click', (event) => {
 });
 
 control();
+
+getData()
+  .then(data => { console.log(data); })
+  .catch(error => { control.error; });
+
