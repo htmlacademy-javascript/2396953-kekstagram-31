@@ -1,14 +1,13 @@
-import {openPopup, closePopup, closePopupOnEsc} from './util.js';
+import { openPopup, closePopup, closePopupOnEsc } from './util.js';
+import { FORM, POPUP_WRAPPER_IMG } from './const.js';
 
-function uploadingPhotos () {
-  const popupWrapper = document.querySelector('.img-upload .img-upload__overlay'),
-    popupClose = document.querySelector('.img-upload .img-upload__cancel'),
-    imgForm = document.querySelector('#upload-select-image'),
+function uploadingPhotos() {
+  const popupClose = document.querySelector('.img-upload .img-upload__cancel'),
     imgInp = document.querySelector('#upload-file'),
     imgUpload = document.querySelector('.img-upload .img-upload__preview img'),
     effectsItems = document.querySelectorAll('.effects__item span');
 
-  imgForm.onchange = () => {
+  FORM.onchange = () => {
     const [file] = imgInp.files;
     if (!file) {
       return;
@@ -16,17 +15,17 @@ function uploadingPhotos () {
 
     const fileUrl = URL.createObjectURL(file);
     imgUpload.src = fileUrl;
-    openPopup(popupWrapper);
+    openPopup(POPUP_WRAPPER_IMG);
 
     effectsItems.forEach((effectsItem) => {
       effectsItem.style.backgroundImage = `url('${fileUrl}')`;
     });
   };
 
-  popupClose.onclick = () => closePopup(popupWrapper);
+  popupClose.onclick = () => closePopup(POPUP_WRAPPER_IMG);
   document.addEventListener('keydown', (event) => {
-    closePopupOnEsc(event, popupWrapper);
+    closePopupOnEsc(event, POPUP_WRAPPER_IMG);
   });
 }
 
-export {uploadingPhotos};
+export { uploadingPhotos };
