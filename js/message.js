@@ -14,11 +14,10 @@ export const showMessage = (el, text) => {
 export const submitButtonText = {
   IDLE: 'Опубликовать',
   SENDING: 'Сохраняю...'
-}
+};
 
-const buttonPictureFormSubmit = document.querySelector('#upload-submit')
+const buttonPictureFormSubmit = document.querySelector('#upload-submit');
 export const textButton = (boolean, text) => {
-    buttonPictureFormSubmit.disabled = boolean;
-    buttonPictureFormSubmit.textContent = text;
-}
-
+  buttonPictureFormSubmit.disabled = boolean;
+  buttonPictureFormSubmit.textContent = text;
+};
