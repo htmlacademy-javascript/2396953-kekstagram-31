@@ -24,7 +24,9 @@ uploadingPhotos();
 control();
 
 const sendFormData = async (formElement) => {
-  if (!valid) { return; }
+  if (!valid) {
+    return;
+  }
 
   try {
     const response = await fetch(formElement.action, {
