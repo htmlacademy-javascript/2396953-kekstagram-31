@@ -23,13 +23,13 @@ requestServer();
 uploadingPhotos();
 control();
 
-const sendFormData = async (FORM) => {
-  if (!valid) return;
+const sendFormData = async (formElement) => {
+  if (!valid) { return; }
 
   try {
-    const response = await fetch(FORM.action, {
-      method: FORM.method,
-      body: new FormData(FORM)
+    const response = await fetch(formElement.action, {
+      method: formElement.method,
+      body: new FormData(formElement)
     });
 
     if (response.ok) {
@@ -40,14 +40,15 @@ const sendFormData = async (FORM) => {
       showErrorMessage();
     }
   } catch (error) {
-    console.error('Произошла ошибка:', error);
     showErrorMessage();
   }
-}
+};
 
-FORM.addEventListener('submit', function (event) {
+const formSubmit = (event) => {
   event.preventDefault();
   event.stopPropagation();
 
   sendFormData(event.target);
-});
+};
+
+FORM.addEventListener('submit', formSubmit);
