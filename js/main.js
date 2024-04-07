@@ -1,13 +1,14 @@
-import { arrayPhoto } from './array-photo.js';
 import { createFragment } from './create-fragment.js';
 import { createPopup } from './create-popup.js';
 import { uploadingPhotos } from './uploading-photos.js';
 import { valid } from './form-validation.js';
 import { control } from './control.js';
-import { getData } from './api.js';
+import { getData, sendData } from './api.js';
 
-createFragment(arrayPhoto);
-createPopup(arrayPhoto);
+const arrPhoto = await getData();
+
+createFragment(arrPhoto);
+createPopup(arrPhoto);
 
 uploadingPhotos();
 
@@ -19,8 +20,3 @@ document.querySelector('#upload-submit').addEventListener('click', (event) => {
 });
 
 control();
-
-getData()
-  .then(data => { console.log(data); })
-  .catch(error => { control.error; });
-
