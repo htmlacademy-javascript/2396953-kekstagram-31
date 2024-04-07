@@ -1,13 +1,13 @@
-import {openPopup, closePopup, closePopupOnEsc} from './util.js';
+import { openPopup, closePopup, closePopupOnEsc } from './util.js';
 import { FORM, POPUP_WRAPPER_IMG } from './const.js';
 
-function uploadingPhotos () {
+function uploadingPhotos() {
   const popupClose = document.querySelector('.img-upload .img-upload__cancel'),
     imgInp = document.querySelector('#upload-file'),
     imgUpload = document.querySelector('.img-upload .img-upload__preview img'),
     effectsItems = document.querySelectorAll('.effects__item span');
 
-    FORM.onchange = () => {
+  FORM.onchange = () => {
     const [file] = imgInp.files;
     if (!file) {
       return;
@@ -28,4 +28,4 @@ function uploadingPhotos () {
   });
 }
 
-export {uploadingPhotos};
+export { uploadingPhotos };
