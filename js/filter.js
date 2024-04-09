@@ -27,7 +27,7 @@ const appendChild = (arr, container) => {
 };
 
 export const filterPhoto = (arrPhoto) => {
-  const count = parseInt(arrPhoto.length) + 1;
+  const count = parseInt(arrPhoto.length, 10) + 1;
   filterButtons.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('img-filters__button')) {
@@ -35,7 +35,7 @@ export const filterPhoto = (arrPhoto) => {
       childButtons.forEach((button) => {
         button.classList.remove('img-filters__button--active');
       });
-    };
+    }
 
     if (event.target.id === 'filter-default') {
       event.target.classList.add('img-filters__button--active');
@@ -44,8 +44,8 @@ export const filterPhoto = (arrPhoto) => {
 
       const picturesArray = Array.from(arrPhoto);
       picturesArray.sort((a, b) => {
-        const idA = parseInt(a.querySelector('.picture__img').getAttribute('id'));
-        const idB = parseInt(b.querySelector('.picture__img').getAttribute('id'));
+        const idA = parseInt(a.querySelector('.picture__img').getAttribute('id'), 10);
+        const idB = parseInt(b.querySelector('.picture__img').getAttribute('id'), 10);
         return idA - idB;
       });
 
@@ -63,7 +63,7 @@ export const filterPhoto = (arrPhoto) => {
         if (!randomNumbers.includes(randomNumber)) {
           randomNumbers.push(randomNumber);
         }
-      };
+      }
 
       randomNumbers.forEach((el, index) => {
         arrPhoto[randomNumbers[index]].classList.remove('hidden');
@@ -76,14 +76,14 @@ export const filterPhoto = (arrPhoto) => {
 
       const picturesArray = Array.from(arrPhoto);
       picturesArray.sort((a, b) => {
-        const commentsA = parseInt(a.querySelector('.picture__comments').textContent);
-        const commentsB = parseInt(b.querySelector('.picture__comments').textContent);
+        const commentsA = parseInt(a.querySelector('.picture__comments').textContent, 10);
+        const commentsB = parseInt(b.querySelector('.picture__comments').textContent, 10);
         return commentsB - commentsA;
       });
 
       resret(arrPhoto);
       appendChild(picturesArray, picturesContainer);
-    };
+    }
 
   });
 };
