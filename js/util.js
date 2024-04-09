@@ -56,4 +56,4 @@ export const throttle = (callback, delayBetweenFrames) => {
       lastTime = now;
     }
   };
-}
+};

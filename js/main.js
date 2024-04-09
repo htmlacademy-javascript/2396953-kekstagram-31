@@ -7,13 +7,17 @@ import { getData } from './api.js';
 import { showMessage, textButton, submitButtonText } from './message.js';
 import { FORM, POPUP_WRAPPER_IMG, ERROR_BLOCK, SUCCESS_BLOCK } from './const.js';
 import { closePopup } from './util.js';
+import { filterPhoto } from './filter.js';
 
 const requestServer = async () => {
   try {
     const arrPhoto = await getData();
-
     createFragment(arrPhoto);
+    document.querySelector('.img-filters').classList.remove('img-filters--inactive');
     createPopup(arrPhoto);
+
+    const pictures = document.querySelectorAll('.picture');
+    filterPhoto(pictures);
   } catch (error) {
     showMessage(ERROR_BLOCK);
   }
@@ -54,3 +58,4 @@ const formSubmit = (event) => {
 };
 
 FORM.addEventListener('submit', formSubmit);
+
