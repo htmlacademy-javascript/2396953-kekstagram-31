@@ -1,49 +1,30 @@
 import { NUMBER_RANDOM_PHOTOS } from './const.js';
 const filterButtons = document.querySelector('.img-filters__form');
 const picturesContainer = document.querySelector('.pictures');
-const classImg = '.picture__img';
-const classComments = '.picture__comments';
 
 const resret = (arr) => {
   arr.forEach(picture => {
     picture.remove();
   });
-}
+};
 
 const addHidden = (arr) => {
   arr.forEach(picture => {
     picture.classList.add('hidden');
   });
-}
+};
 
 const removeHidden = (arr) => {
   arr.forEach(picture => {
     picture.classList.remove('hidden');
   });
-}
+};
 
 const appendChild = (arr, container) => {
   arr.forEach(picture => {
     container.appendChild(picture);
   });
-}
-
-const sortUp = (arr, el) => {
-  Array.from(arr).sort((a, b) => {
-    const elA = parseInt(a.querySelector(`${el}`).getAttribute('id'));
-    const elB = parseInt(b.querySelector(`${el}`).getAttribute('id'));
-    return elA - elB;
-  });
-}
-
-const sortDown = (arr, el) => {
-  Array.from(arr).sort((a, b) => {
-    const elA = parseInt(a.querySelector(`${el}`).textContent);
-    const elB = parseInt(b.querySelector(`${el}`).textContent);
-    return elB - elA;
-  });
-}
-
+};
 
 export const filterPhoto = (arrPhoto) => {
   const count = parseInt(arrPhoto.length) + 1;
@@ -54,14 +35,12 @@ export const filterPhoto = (arrPhoto) => {
       childButtons.forEach(button => {
         button.classList.remove('img-filters__button--active');
       });
-    }
+    };
 
     if (event.target.id === 'filter-default') {
       event.target.classList.add('img-filters__button--active');
 
       removeHidden(arrPhoto);
-
-      // sortUp(arrPhoto, classImg);
 
       const picturesArray = Array.from(arrPhoto);
       picturesArray.sort((a, b) => {
@@ -95,8 +74,6 @@ export const filterPhoto = (arrPhoto) => {
 
       removeHidden(arrPhoto);
 
-      // sortDown(arrPhoto, classComments);
-
       const picturesArray = Array.from(arrPhoto);
       picturesArray.sort((a, b) => {
         const commentsA = parseInt(a.querySelector('.picture__comments').textContent);
@@ -106,7 +83,7 @@ export const filterPhoto = (arrPhoto) => {
 
       resret(arrPhoto);
       appendChild(picturesArray, picturesContainer);
-    }
+    };
 
   });
 };

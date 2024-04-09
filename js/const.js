@@ -1,4 +1,3 @@
-const picturesPhoto = document.querySelector('.pictures')
 export const BODY = document.querySelector('body'),
   BASE_URL = 'https://31.javascript.htmlacademy.pro/kekstagram',
   FORM = document.querySelector('#upload-select-image'),
@@ -8,4 +7,3 @@ export const BODY = document.querySelector('body'),
   SUCCESS_BLOCK = document.querySelector('#success').content.querySelector('.success'),
   PICTURES = document.querySelectorAll('.picture'),
   NUMBER_RANDOM_PHOTOS = 10;
-
