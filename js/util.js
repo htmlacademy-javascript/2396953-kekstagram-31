@@ -1,10 +1,10 @@
 import {BODY} from './const.js';
 
-function getRandomNumber(max, min = 0) {
+export function getRandomNumber(max, min = 0) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getUniqueRandomNumber(number, usedNumbers) {
+export function getUniqueRandomNumber(number, usedNumbers) {
   let randomNumber;
   do {
     randomNumber = number;
@@ -13,12 +13,12 @@ function getUniqueRandomNumber(number, usedNumbers) {
   return randomNumber;
 }
 
-function openPopup (popupWrapper) {
+export function openPopup (popupWrapper) {
   popupWrapper.classList.remove('hidden');
   BODY.classList.add('modal-open');
 }
 
-function closePopup (popupWrapper, callback) {
+export function closePopup (popupWrapper, callback) {
   popupWrapper.classList.add('hidden');
   BODY.classList.remove('modal-open');
   if (callback) {
@@ -26,17 +26,34 @@ function closePopup (popupWrapper, callback) {
   }
 }
 
-const closePopupOnEsc = (event, popupWrapper) => {
+export const closePopupOnEsc = (event, popupWrapper) => {
   if (event.key === 'Escape') {
     closePopup (popupWrapper);
   }
 };
 
-const stopEsc = (event) => {
+export const stopEsc = (event) => {
   if (event.key === 'Escape') {
     event.stopPropagation();
     event.preventDefault();
   }
 };
 
-export {getRandomNumber, getUniqueRandomNumber, openPopup, closePopup, closePopupOnEsc, stopEsc};
+export const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export const throttle = (callback, delayBetweenFrames) => {
+  let lastTime = 0;
+  return (...rest) => {
+    const now = new Date();
+    if (now - lastTime >= delayBetweenFrames) {
+      callback.apply(this, rest);
+      lastTime = now;
+    }
+  };
+};
