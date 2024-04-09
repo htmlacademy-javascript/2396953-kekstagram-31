@@ -3,25 +3,25 @@ const filterButtons = document.querySelector('.img-filters__form');
 const picturesContainer = document.querySelector('.pictures');
 
 const resret = (arr) => {
-  arr.forEach(picture => {
+  arr.forEach((picture) => {
     picture.remove();
   });
 };
 
 const addHidden = (arr) => {
-  arr.forEach(picture => {
+  arr.forEach((picture) => {
     picture.classList.add('hidden');
   });
 };
 
 const removeHidden = (arr) => {
-  arr.forEach(picture => {
+  arr.forEach((picture) => {
     picture.classList.remove('hidden');
   });
 };
 
 const appendChild = (arr, container) => {
-  arr.forEach(picture => {
+  arr.forEach((picture) => {
     container.appendChild(picture);
   });
 };
@@ -32,7 +32,7 @@ export const filterPhoto = (arrPhoto) => {
 
     if (event.target.classList.contains('img-filters__button')) {
       const childButtons = filterButtons.querySelectorAll('.img-filters__button');
-      childButtons.forEach(button => {
+      childButtons.forEach((button) => {
         button.classList.remove('img-filters__button--active');
       });
     };
