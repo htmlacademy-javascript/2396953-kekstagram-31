@@ -23,5 +23,4 @@ const load = async (route, metod = Method.GET, body = null) => {
 const getData = async () => await load(Route.GET_DATA);
 const sendData = async (body) => await load(Route.SEND_DATA, Method.POST, body);
 
-
 export { getData, sendData };
