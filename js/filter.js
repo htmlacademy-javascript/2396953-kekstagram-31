@@ -84,6 +84,6 @@ export const filterPhoto = (arrPhoto) => {
       resret(arrPhoto);
       appendChild(picturesArray, picturesContainer);
     }
-
   });
 };
+
